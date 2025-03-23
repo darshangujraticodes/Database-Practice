@@ -1,3 +1,5 @@
+# Mongo DB Course Notes Course Refered : Technical Thapa Youtube Course
+
 # Best site to generate dummy json data is : Mockaroo
 
 I have generated 2 dummy data Employee and Teachers to practice operation on large data sets :
@@ -261,7 +263,7 @@ Note : Collection name and fields name inside collection are case sensitive <br>
    syntax : db.collection_name.find( $operator : [(condition1), (condition2)] ); <br>
 
    ```
-<<<<<<< HEAD
+   <<<<<<< HEAD
    db.students.find( { $or : [ { rollno : {$gt  : 150} } , {'sports':'baseball' } ] } ).count();
    ```
 
@@ -269,7 +271,8 @@ Note : Collection name and fields name inside collection are case sensitive <br>
    It execute only when both condition are true.
    syntax : db.collection_name.find( $operator : [] ); <br>
 =======
-   db.students.find( { $or : [ { rollno : {$gt  : 20} } , {'sports':'baseball' } ] } ).count();
+   db.students.find( { $or : [ { rollno : {$gt : 20} } , {'sports':'baseball' } ] } ).count();
+
    ```
 
    c. $nor operator: <br>
@@ -277,7 +280,9 @@ Note : Collection name and fields name inside collection are case sensitive <br>
    syntax : db.collection_name.find( $operator : [(condition1), (condition2)] ); <br>
 
    ```
-   db.students.find( { $or : [ { rollno : {$gt  : 20} } , {'sports':'baseball' } ] } ).count();
+
+   db.students.find( { $or : [ { rollno : {$gt : 20} } , {'sports':'baseball' } ] } ).count();
+
    ```
 
    c. $not operator: <br>
@@ -285,7 +290,11 @@ Note : Collection name and fields name inside collection are case sensitive <br>
    syntax : db.collection_name.find( { fieldkey : { $operator : { condition } } } ); <br>
 
    ```
-   db.students.find({  stream : { $not : { $eq : 'commerce' } }  });
+
+   db.students.find({ stream : { $not : { $eq : 'commerce' } } });
+
+   ```
+
    ```
 
 ---
@@ -332,10 +341,9 @@ Note : Collection name and fields name inside collection are case sensitive <br>
      syntax :<br>
      db.collection_name.deleteMany( { field_key:field_value } );
      <br>
-     ```
-     db.students.deleteMany({ stream: 'diploma'  });
-     ```
->>>>>>> 0eaf1f572ce7b8893df98e478ac654fa88f2c48d
+     `     db.students.deleteMany({ stream: 'diploma'  });
+    `
+     > > > > > > > 0eaf1f572ce7b8893df98e478ac654fa88f2c48d
 
 ---
 

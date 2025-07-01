@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Aristotle Forst",
+    "email": "aforst0@bravesites.com",
+    "gender": "Male",
+    "job_title": "Software Test Engineer II",
+    "department": "Accounting",
+    "exp_year": "0",
+    "type": "fresher"
+  },
+  {
+    "name": "Valentine Whibley",
+    "email": "vwhibley1@ocn.ne.jp",
+    "gender": "Male",
+    "job_title": "Engineer II",
+    "department": "Sales",
+    "exp_year": "0",
+    "type": "fresher"
+  },
+  {
+    "name": "Silvia Cortez",
+    "email": "scortez2@simplemachines.org",
+    "gender": "Female",
+    "job_title": "Social Worker",
+    "department": "Sales",
+    "exp_year": "0",
+    "type": "fresher"
+  },
+  {
+    "name": "Jarrid Kinkade",
+    "email": "jkinkade3@dyndns.org",
+    "gender": "Male",
+    "job_title": "Staff Scientist",
+    "department": "Product Management",
+    "exp_year": "3",
+    "type": "experience",
+    "previous": ["amazon", "google", "facebook"]
+  },
+  {
+    "name": "John Dow ",
+    "email": "johndow@gmail.com",
+    "gender": "Male",
+    "job_title": "Staff Scientist",
+    "department": "Development Management",
+    "type": "experience",
+    "exp_year": "2",
+    "previous": ["amazon", "google"]
+  }
+]

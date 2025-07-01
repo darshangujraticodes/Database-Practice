@@ -2,7 +2,46 @@
 
 ### What is MongoDB ?
 
-It combination of 2 word mongo and db, mongo means huge and db means database. Database which store large amoun t of data
+1. It is database server
+2. It combination of 2 word mongo and db, mongo means huge and db means database. Database which store large amoun t of data
+3. Highly scalable
+4. documents consist of data in json format.
+5. sql has table and table stored multiple data in rows format similarly nosql has collections and stored document on curly braces json format.
+6. It has less relations
+7. data is stored together
+8. doument data is stored in "BJSON" Binary JSON convert data into binary to make it machine understandable and fast processing.
+
+eg. collections employee
+
+```
+[
+  {
+    "name" : "Harsh Shah",
+    "age" : "27",
+    "dept" : "development",
+    "salary" : "800000 lpa"
+    "identity" : {
+      "aadhar" : "242202524987",
+      "pan": "GGOKL0874F",
+    },
+    "type" : "fresher",
+  },
+  {
+    "name" : "Darsh Shah",
+    "age" : "27",
+    "dept" : "development",
+    "salary" : "1500000 lpa"
+    "identity" : {
+      "aadhar" : "243302524877",
+      "pan": "MMOKL0834F",
+    },
+    "type" : "experience",
+    "exp_year" : "2",
+    "previous" : ["amazon" , "google"]
+  },
+]
+
+```
 
 |    Database    |                   MySQL                   |           MongoDB (NoSQL DB)           |
 | :------------: | :---------------------------------------: | :------------------------------------: |
@@ -13,6 +52,7 @@ It combination of 2 word mongo and db, mongo means huge and db means database. D
 |  Transactions  |         Support ACID transactions         |       Support ACID transactions        |
 |  Performance   | Use for structured data & complex queries | Use for unstructured & large datasets  |
 |   Use Cases    |        Banking ,Ecom ,ERP ,CRM etc        | Big data, data analytics, social media |
+|  DB structure  |           database, table, rows           |    database, collections, documents    |
 
 <br>
 

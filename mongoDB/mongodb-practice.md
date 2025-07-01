@@ -146,9 +146,9 @@ Note : Collection name and fields name inside collection are case sensitive <br>
      ])
      ```
 
-- While inserting data in mongodb it has 2 operation methods <br>
-  --> Ordered : It is default behaviour and line execution interpretor stops after encountering first error. <br>
-  --> Unordered : It is behaviour which ee have to set by setting `{ orderend: false }` which will allow interpretor to move on even though if it encounter any error jump on next line.
+   - While inserting data in mongodb it has 2 operation methods <br>
+     - Ordered : It is default behaviour and line execution interpretor stops after encountering first error. <br>
+     - Unordered : It is behaviour in which we have to set by setting `{ orderend: false }` which will allow interpretor to move on even though if it encounter any error jump on next line.
 
 ---
 
@@ -341,8 +341,7 @@ Note : Collection name and fields name inside collection are case sensitive <br>
      syntax :<br>
      db.collection_name.deleteMany( { field_key:field_value } );
      <br>
-     `     db.students.deleteMany({ stream: 'diploma'  });
-    `
+     `    db.students.deleteMany({ stream: 'diploma'  });`
      > > > > > > > 0eaf1f572ce7b8893df98e478ac654fa88f2c48d
 
 ---

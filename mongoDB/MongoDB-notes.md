@@ -64,68 +64,74 @@ eg. collections employee
 
 ### MongoDB Commands
 
-- **Create new Database** <br>
-  Create New Database <br>
-  `syntax : use database_name`
-  example : `use college`
+**Database Operation Commands**
 
-  Delete Database <br>
-  `syntax : use database_name`
-  step 1 : Go into that database which u want to delete
-  step 2 : Execute command `db.dropDatabase()`
+1. Create New Database <br>
+   `syntax : use database_name` <br>
+   example : `use college` <br>
+   If it does not have that database then it will create and use.<br> <br>
 
-  Create Collections <br>
-  `syntax : db.createCollection("<collection_name>", { options })`
-  example : `db.createCollection('students')`
+2. Delete Database <br>
+   step 1 : Go into that database which u want to delete <br>
+   step 2 : Execute command `db.dropDatabase()`<br><br>
 
-  Delete Collections <br>
-  `syntax : db.<collection_name>.drop()`
-  example : `db.students.drop()`
+**Collection Operation Commands**
 
-- **Collections Operation** <br>
+1. Create Collections <br>
+   `syntax : db.createCollection("<collection_name>", { options })` <br>
+   example : `db.createCollection('students')` <br>
 
-  - CREATE | Insert Data in Collections <br>
-    `syntax : inserOne({ query } , options) | insertMany({query}, options)` <br>
-    It is of 2 types : insertMany() | insertOne() <br>
-    example : `db.students.insertOne({name: "Rohit", roll_no:1, stream:"Science"})` <br>
-    example : `db.students.insertOne( { rollno:100 , name: 'Archisha'  } )` <br>
-    example : `db.students.insertMany( [ { rollno:101 , name: 'deepak'  } , { rollno:102 , name: 'aniket'   } , {   rollno:103 , name: 'sahil'   }   ] , { ordered : false }  )` -> note while inserting multiple data insert all json query in list []
+2. Delete Collections <br>
+   `syntax : db.<collection_name>.drop()` <br>
+   example : `db.students.drop()`<br>
 
-    To remove synchronize behavior : if this options `{ ordered : false }` is added as options it will break synchronize behaviour of mongodb and will execute other query by jumping to next if found any error in any query while executing it.
+3. Show Collections <br>
+   `syntax : show collections` <br>
+   example : `show collections`<br> <br>
 
-  - READ | Display Collection data <br>
-    `syntax : find( {filter}, options) | findMany({filter}, options)` <br>
-    findOne() -> return single doc record <br>
-    find() -> return cursor or copy of new json array valaue on which operation can be performed eg forEach, <br>
-    example : `db.students.find()` -> fetch all values in collections <br>
-    example : `db.students.findOne({name:"Ram"})` -> fetch single value <br>
-    example : `db.students.find().count()` -> display all values count <br>
-    example : `db.students.find({hobbies: 'Anime'})` -> fetch all value on the basis of list data<br>
-    example : `db.students.find({ 'idCard.hasDomicile' : false})` -> fetch all nested doc collection value <br>
-    example : `db.students.find({}).forEach((x) => {printjson(x)})` -> forEach loop on find() <br>
-    example : `db.students.find({ rollno : { $gte : 5 , $lte : 25 } }).count()` -> conditional operator <br>
-    example : `db.students.find({ rollno : { $gt : 5 , $lt : 30 }  }).toArray()` -> return json doc into array values <br>
-    example : `db.students.find({} , {name : 1 , _id : 0} )` -> options it will display specific data just like here we are fetching only name and all set to 0
+**Docmuments Operation** <br>
 
-  - UPDATE | Update data in Collection <br>
-    `syntax : updateOne( { condition  } , { $set : { query } }, options) | updateMany( { condition  } , { $set : { query } }, options)` <br>
-    To update only single values in collection <br>
-    It is also called nested document (creating doc inside doc) <br>
-    Nested Doc has limit of 100 and Max Memory size to store nested doc is 16mb <br>
-    Here we are creating idCard nested doc inside student main doc with `$set` <br>
-    example : `db.students.updateOne({name: "Ram"},{ $set: {  idCard : { hasDomicile: true, hasAadharCard : true   } } })` <br>
+1. CREATE | Insert Data in Collections <br>
+   `syntax : db.<collection_name>.insertOne({ query })` <br>
+   `syntax : db.<collection_name>.insertMany([{ query }, { query } , { query }])` <br>
+   It is of 2 types : insertMany() | insertOne() <br>
+   example : `db.students.insertOne({name: "Rohit", roll_no:1, stream:"Science"})` <br>
+   example : `db.students.insertMany( [ { rollno:101 , name: 'deepak'  } , { rollno:102 , name: 'aniket'   } , {   rollno:103 , name: 'sahil'   }   ] , { ordered : false }  )` <br>
+   note while inserting multiple data insert all json query in list [] <br>
+   To remove synchronize behavior : if this options `{ ordered : false }` is added as options it will break synchronize behaviour of mongodb and will execute other query by jumping to next if found any error in any query while executing it. <br> <br>
 
-    To update all values in collection <br>
-    example : `db.students.updateMany({},{ $set: {  idCard : { hasDomicile: false, hasAadharCard : true   } } })` -> add nested doc inside main doc <br>
-    example : `db.students.updateMany({},{ $set: {  hobbies: ['Anime', 'reading books','exploring new place']  } })` -> adding list inside main doc <br>
-    example : `db.students.updateMany({ rollno : { $gte : 50 } },{ $set: {  hobbies: ['Anime', 'reading books','exploring new place']  } })` -> adding list inside main doc <br>
-    example : ` db.students.updateMany({ rollno : {$gt : 80} } , {  $set : { isEligible : true }  })` -> will update all rollno greater than 80 with isEligible true
+2. READ | Display Collection data <br>
+   `syntax : db.<collection_name>.find()/find({})` : It return all document inside collections. <br>
+   `syntax : db.<collection_name>.findOne()` : It returns only one conditional match document. <br>
+   `syntax : db.<collection_name>.find({ key:value })` : It returns and display all conditional match document <br>
+   `syntax : db.<collection_name>.find().count()` : display the total count of conditional match documents <br>
+   `syntax : db.<collection_name>.find({  'idCards.hasPanCard' : true })` : dot operator use to match nested object conditions and wrap it in '' single inverted comma
+   `db.students.find({}).forEach((x) => {printjson(x)})` -> forEach loop on find() <br>
+   `db.students.find({ rollno : { $gte : 5 , $lte : 25 } }).count()` -> conditional operator <br>
+   `db.students.find({ rollno : { $gt : 5 , $lt : 30 }  }).toArray()` -> return json doc into array values <br>
+   `db.students.find({} , {name : 1 , _id : 0} )` -> return array of name data only | options it will display specific data just like here we are fetching only name and all set to 0
+   <br><br>
 
-  - DELETE | Delete data in Collection <br>
-    `syntax : deleteOne(  { query } , options) | deleteMany( { query } , options)` <br>
-    example : `db.students.deleteOne({ name: 'ajay' })` -> It help to delete single value in collections <br>
-    example : `db.students.deleteMany({ rollno : { $gte : 3 , $lte : 5 } } )` -> it help to delete multiple value in collections
-    example : `db.students.deleteMany({} )` -> it will delete all records in collections
+3. UPDATE | Update data in Collection <br>
+   `syntax : db.<collection_name>.updateOne( { condition } , { $set : { query } });` <br>
+   `syntax : db.<collection_name>.updateMany( { condition } , { $set : { query } });` <br>
+   To update only single values in collection <br>
+   It is also called nested document (creating doc inside doc) <br>
+   Nested Doc has limit of 100 and Max Memory size to store nested doc is 16mb <br>
+   Here we are creating idCard nested doc inside student main doc with `$set` <br>
+   example : `db.students.updateOne({name: "Ram"},{ $set: {  idCard : { hasDomicile: true, hasAadharCard : true   } } })` <br>
+
+To update all values in collection <br>
+example : `db.students.updateMany({},{ $set: {  idCard : { hasDomicile: false, hasAadharCard : true   } } })` -> add nested doc inside main doc <br>
+example : `db.students.updateMany({},{ $set: {  hobbies: ['Anime', 'reading books','exploring new place']  } })` -> adding list inside main doc <br>
+example : `db.students.updateMany({ rollno : { $gte : 50 } },{ $set: {  hobbies: ['Anime', 'reading books','exploring new place']  } })` -> adding list inside main doc <br>
+example : ` db.students.updateMany({ rollno : {$gt : 80} } , {  $set : { isEligible : true }  })` -> will update all rollno greater than 80 with isEligible true
+
+- DELETE | Delete data in Collection <br>
+  `syntax : deleteOne(  { query } , options) | deleteMany( { query } , options)` <br>
+  example : `db.students.deleteOne({ name: 'ajay' })` -> It help to delete single value in collections <br>
+  example : `db.students.deleteMany({ rollno : { $gte : 3 , $lte : 5 } } )` -> it help to delete multiple value in collections
+  example : `db.students.deleteMany({} )` -> it will delete all records in collections
 
 ### MongoDB Datatypes
 
